@@ -1,0 +1,121 @@
+{
+						cout << "Bienvenido a la bodega." << endl;
+						cout << "1. Mostrar Ingredientes y Platos disponibles." << endl;
+						cout << "2. Agregar Ingredientes al inventario." << endl;
+						cout << "3. Insertar nuevo plato" << endl;
+						int option2 = 0;
+						cin >> option2;
+						switch(option2){
+							case 1:
+									{
+									
+									printIngredientes(bodega,bodeganumerica);
+									printPlato(platos);
+									}
+									break;
+							case 2:
+									{
+									cout << "Ingrese el nombre del Ingrediente." << endl;
+									cin >> input;
+									cout << "Que tipo de Ingrediente es ? \n"
+									<< "1. Lacteo. \n"
+									<< "2. Vegetales \n"
+									<< "3. Fruta \n"
+									<< "4. otro." << endl;
+									cin >> type;
+									switch(type){
+										case 1:
+											tipo = "Lacteo";
+											break;
+										case 2:
+											tipo = "Vegetales";
+											break;
+										case 3:
+											tipo = "Fruta";
+											break;
+										case 4: 
+											tipo = "Otro";
+											break;
+										default:
+											cout << "Invalido. Se puso otro como default. " << endl;
+											tipo = "Otro";
+											break;
+									}
+									cout << "Ingrese el aporte de sabor (INT)" << endl;
+									string aportesabor = "";
+									int finalaportesabor = 0;
+									cin >> aportesabor;
+									stringstream stream;
+									stream << aportesabor;
+									stream >> finalaportesabor;
+									cout << "Ingrese la duracion del producto (INT)" << endl;
+									string duracionsabor = "";
+									int finalduracionsabor = 0;
+									cin >> duracionsabor;
+									stream << duracionsabor;
+									stream >> finalduracionsabor;
+									cout << "Ingrese la cantidad del producto (INT)" << endl;
+									
+									string cantidadproducto = "";
+									cin >> cantidadproducto;
+									int finalcantidadproducto = 0;
+									stream << cantidadproducto;
+									stream >> finalcantidadproducto;
+									//Ingredientes* nuevo = new Ingredientes(input,tipo,finalaportesabor,finalduracionsabor,finalcantidadproducto); 
+									bodega.push_back(new Ingredientes(input,tipo,finalaportesabor,finalduracionsabor,finalcantidadproducto));
+									bodeganumerica.push_back(finalcantidadproducto);
+									
+									cout << "Creacion exitosa !" << endl;
+								}
+									break;
+							case 3:
+									{
+										cout << "Ingrese el nombre del plato: " << endl;
+										cin >> input;
+										char miniresp = 's';
+										cout << "Ingrese los ingredientes del Plato (NO ESTA VALIDADO FAVOR NO REPETIR O METER LETRAS GRACIAS :) (INT)" << endl;
+										vector<Ingredientes*> ingredientespormientras;
+										vector<int> contadorpormientras;
+										while(miniresp == 's' || miniresp == 'S'){
+
+											for (int i = 0; i < bodega.size(); ++i)
+											{
+												cout << i << "." << bodega[i] -> toString() <<endl; 
+											}
+
+											int veces2 = 0;
+											cin >> veces2;
+											cout << "Que cantidad de ingrediente usa? " << endl;
+											string ultratemporal = "";
+											cin >> ultratemporal;
+											int cantidadnueva = 0;
+											stringstream streamnuevo;
+											streamnuevo << ultratemporal;
+											streamnuevo >> cantidadnueva;
+											ingredientespormientras.push_back(bodega[veces2]);
+											contadorpormientras.push_back(cantidadnueva);
+											cout << "Desea agregar otro ingrediente? " << endl;
+											cin >> miniresp;
+										}
+										string review = "";
+										cout << "Ingrese una breve reseña." ;
+										getline(cin,review);
+										//cin.ignore();
+										cout << "Ingrese el precio.";
+										string precio3 = "";
+										cin >> precio3;
+										int precionuevo = 0;
+										stringstream yanotengonombres;
+										yanotengonombres << precio3;
+										yanotengonombres >> precionuevo; 
+									//latos* nuevosplates = new Platos(input,ingredientespormientras,contadorpormientras,review,0,precio3,5);
+									//latos.push_back(nuevosplates);
+									}
+									break;
+						
+
+
+
+
+						}	
+						break;
